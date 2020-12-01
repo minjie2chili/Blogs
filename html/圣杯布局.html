@@ -1,0 +1,66 @@
+<!--
+ * @Author: leiminjie
+ * @Date: 2020-11-23 15:23:03
+ * @LastEditors: leiminjie
+ * @LastEditTime: 2020-12-01 21:18:23
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣杯布局</title>
+    <style>
+        body{
+            min-width: 550px;
+        }
+        #header, #footer {
+    background: rgba(29, 27, 27, 0.726);
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+  }
+  #container{
+      padding-left: 200px;
+      padding-right: 150px;
+      overflow: hidden;
+  }
+  #container .column{
+    float: left;
+    position: relative;
+    text-align: center;
+    height: 300px;
+    line-height: 300px;
+  }
+  #center {
+    width: 100%;
+    background: rgb(206, 201, 201);
+  }
+  #left{
+      width: 200px;
+      right: 200px;
+      margin-left: -100%;
+      background: rgba(95, 179, 235, 0.972);
+  }
+  #right{
+      width: 150px;
+      margin-right: -150px;
+      background: rgb(231, 105, 2);
+  }
+    </style>
+</head>
+<body>
+    <div id="header">#header</div>
+  <div id="container">
+    <div id="center" class="column">#center</div>
+    <div id="left" class="column">#left</div>
+    <div id="right" class="column">#right</div>
+  </div>
+  <div id="footer">#footer</div>
+    
+</body>
+</html>
+<!-- https://www.cnblogs.com/LiveWithIt/p/6024864.html#commentform -->
+<!-- clientHeight offsetHeight -->
+<!-- bfc -->
+<!-- css变量 -->
