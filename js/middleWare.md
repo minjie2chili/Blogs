@@ -1,10 +1,3 @@
-<!--
- * @Author: leiminjie
- * @Date: 2020-10-19 19:26:40
- * @LastEditors: leiminjie
- * @LastEditTime: 2020-10-20 17:50:51
--->
-
 #### 中间件：
 
 express 和 koa 的中间件主要是将 node 接口的请求做了改造，是一个函数，通常接收 req 和 res 作为参数，客户端的每一个请求，需要经过中间件的处理才能往下走。

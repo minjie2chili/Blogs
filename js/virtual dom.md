@@ -1,19 +1,13 @@
-/*
- * @Author: leiminjie
- * @Date: 2020-10-16 10:06:49
- * @LastEditors: leiminjie
- * @LastEditTime: 2020-10-19 10:06:30
- */
+Virtual DOM 算法主要是实现上面步骤的三个函数：element，diff，patch。
+然后就可以实际的进行使用：
 
-// Virtual DOM 算法主要是实现上面步骤的三个函数：element，diff，patch。
-// 然后就可以实际的进行使用：
+diff介绍：https://zhuanlan.zhihu.com/p/103187276
+https://zh-hans.reactjs.org/docs/reconciliation.html
 
-// diff介绍：https://zhuanlan.zhihu.com/p/103187276
-// https://zh-hans.reactjs.org/docs/reconciliation.html
+diff实现 https://zhuanlan.zhihu.com/p/63964441
 
-// diff实现 https://zhuanlan.zhihu.com/p/63964441
 
-// 公钥和私钥 https://blog.csdn.net/weixin_30535913/article/details/98551563?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-2.edu_weight&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-2.edu_weight
+```js
 function Element(tagName, props, children) {
   this.tagName = tagName;
   this.props = props;
@@ -106,3 +100,4 @@ function applyPatches(node, currentPatches) {
     }
   });
 }
+```

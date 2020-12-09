@@ -147,74 +147,12 @@ NaN===NaN // false
 Object.is(+0,-0)  // false
 +0===-0  // true
 
-#### 8. BFC相关知识点
-- bfc内，盒子垂直排列；
-- 同一个bfc的两个元素的margin会发生垂直合并，使用bfc可保证margin都生效，因为bfc是页面上的一个独立容器，容器子元素不影响外面的元素
-- 计算bfc高度，浮动元素也算在内
-- bfc的区域不会与float box重叠，所以一个兄弟元素为float时，防止两者重叠，可把一个元素设置bfc
 
 
-##### 创建bfc
-根元素
-浮动元素，float不为none
-position为absolute或fixed
-overflow不为visible的元素
-display为inline-block，table-cell，table-caption
+#### **8. new 后面接带括号的函数**
 
-
-#### 9. commonJS、es6模块和AMD、CMD规范
-**AMD 和 CMD 规范的区别？ 它们之间的主要区别有两个方面。**
-（1）第一个方面是在模块定义时对依赖的处理不同。AMD 推崇依赖前置，在 定义模块的时候就要声明其依赖的模块。而 CMD 推崇 就近依赖，只有在用到 某个模块的时候再去 require。
-
-（2）第二个方面是对依赖模块的执行时机处理不同。首先 AMD 和 CMD 对于 模块的加载方式都是异步加载，不过它们的区别在于 模块的执行时机，AMD 在 依赖模块加载完成后就直接执行依赖模块，依赖模块的执行顺序和我们书写的顺 序不一定一致。而 CMD 在依赖模块加载完成后并不执行，只是下载而已，等 到所有的依赖模块都加载好后，进入回调函数逻辑，遇到 require 语句 的时候 才执行对应的模块，这样模块的执行顺序就和我们书写的顺序保持一致了。 
-AMD非同步加载，可指定回调函数
-```javascript
-// CMD
-define(function(require, exports, module) { 
-    var a = require("./a"); 
-    a.doSomething(); // 此处略去 100 行 
-    var b = require("./b"); // 依赖可以就近书写 
-    b.doSomething(); 
-    // ...
-}); 
-// AMD 默认推荐 
-define(["./a", "./b"], function(a, b) { // 依赖必须一开始就写好 
-    a.doSomething(); // 此处略去 100 行 
-    b.doSomething(); // ...
-});
-```
-
-**ES6 模块与 CommonJS 模块 的差异。**
-commonJS:每个模块提供了一个exports变量，默认exports = module.exports
-所以可以使用exports.add = function(){};exports.minus = function(){}
-但是不要切断两者的引用，如将exports直接指向一个对象，exports=xxx 
-commonJS 使用require和module.exports
-
-es6实现了import和export，实际上也是经过babel翻译成require和module.exports,所以编译还不够，还需要借助webpack这种工具打包
-nodejs会把commonJS规范下代码全变成函数字符串，然后通过vm解析
-浏览器中实现require和module对象，同时也是变成字符串让浏览器执行
-
-1.CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。 CommonJS 模块输出的是值的拷贝，也就是说，一旦输出一个值，模块 内部的变化就影响不到这个值。ES6 模块的运行机制与 CommonJS 不一 样。JS 引擎对脚本静态分析的时候，遇到模块加载命令 import，就会生 成一个只读引用。等到脚本真正执行时，再根据这个只读引用，到被加载 的那个模块里面去取值。 
-2.CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。 CommonJS 模块就是对象，即在输入时是先加载整个模块，生成一个对 象，然后再从这个对象上面读取方法，这种加载称为“运行时加载”。而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就 会生成。
-
-#### 10. node的一些知识
-- process.cwd():nodejs 进程的工作目录
-- __dirname: nodejs全局变量，获取当前文件所在目录完整目录名
-- __filename: 带完整路径得文件名
-
-- path.join(path1,path2,path3) 把路径字符串连起来并规范路径
-- path.resolve([from...],to) 相当于cd操作
-
-**loader：**
-https://www.jianshu.com/p/c89f1f3fd4af
-
-**plugin：**
-https://blog.csdn.net/yolo0927/article/details/85017565
-https://www.jianshu.com/p/02e3f743659b
-
-
-**new 后面接带括号的函数**
 根据优先级知道 点的优先级高于new
+
 1. new Foo.getName(); // 先 xx = Foo.getName 然后 new xx()
 2. new Foo().getName(); // 先 xx = new Foo() 然后 xx.getName()
 3. new new Foo().getName(); // 先 xx = new Foo() 然后 new xx.getName() 回到1的样子
