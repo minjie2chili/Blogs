@@ -154,5 +154,27 @@ Object.is(+0,-0)  // false
 根据优先级知道 点的优先级高于new
 
 1. new Foo.getName(); // 先 xx = Foo.getName 然后 new xx()
+
 2. new Foo().getName(); // 先 xx = new Foo() 然后 xx.getName()
+
 3. new new Foo().getName(); // 先 xx = new Foo() 然后 new xx.getName() 回到1的样子
+
+   
+
+#### **9. async和await的事件循环**
+
+```js
+async function test(){
+    return 1 // async函数帮忙隐式使用promise对象
+}
+//相当于
+function test(){
+    return new Promise((function(resolve,reject){
+        resolve(1)
+    }))
+}
+
+
+// await等待右侧表达式的结果 结果可以是promise对象的值或者一个函数的值
+// 使用await时 会从右往左执行 遇到await时 会阻塞内部函数处于它后面的代码 去执行函数外部的同步代码 当外部同步代码执行完毕 然后回到函数里执行剩余代码 然后处理微任务队列代码
+```
