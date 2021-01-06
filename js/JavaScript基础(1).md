@@ -173,8 +173,28 @@ function test(){
         resolve(1)
     }))
 }
-
+// 例子
+async function async1() {
+    console.log( 'async1 start' )
+    await async2()
+    console.log( 'async1 end' )
+}
+async function async2() {
+    console.log( 'async2' )
+}
+console.log( 'script start' )
+setTimeout( function () {
+    console.log( 'setTimeout' )
+}, 0 )
+async1();
+new Promise( function ( resolve ) {
+    console.log( 'promise1' )
+    resolve();
+} ).then( function () {
+    console.log( 'promise2' )
+} )
+console.log( 'script end' )
 
 // await等待右侧表达式的结果 结果可以是promise对象的值或者一个函数的值
-// 使用await时 会从右往左执行 遇到await时 会阻塞内部函数处于它后面的代码 去执行函数外部的同步代码 当外部同步代码执行完毕 然后回到函数里执行剩余代码 然后处理微任务队列代码
+// 使用await时 await后面的代码（上面是console.log( 'async1 end' )这行代码）会加入到微任务队列中，相当于async2().then(()=>console.log( 'async1 end' ))
 ```
