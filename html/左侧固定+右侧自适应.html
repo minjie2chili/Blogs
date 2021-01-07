@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>左侧固定+右侧自适应</title>
+    <style>
+        .container{
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        .container>div{
+            height: 100%;
+        }
+        .container div:first-child{
+            width: 200px;
+            background-color: red;
+        }
+        .container div:last-child{
+            background-color: green;
+        }
+        /* float布局 (这种布局的问题是子元素设置了高度 父元素不会被撑开)*/
+        .left1{
+            float: left;
+        }
+        .right1{
+            margin-left: 200px;
+        }
+        /* table布局 (这种布局的问题是父元素需要设置宽度，设置table后默认是子元素宽度)*/
+        .container2{
+            display: table;
+            width: 100%;
+        }
+        .left2{
+            display: table-cell;
+        }
+        .right2{
+            display: table-cell;
+        }
+        /* calc布局 left和right都使用inline-block，同时要消除间隙——元素之间不换行*/
+        /* calc布局 也可以left使用float:left; right使用float:right */
+        .left3{
+            display: inline-block;
+        }
+        .right3{
+            display: inline-block;
+            width: calc(100% - 200px);
+        }
+        /* flex布局 */
+        .container4{
+            display: flex;
+        }
+        .right4{
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container container1">
+        <div class="left1">我是左侧</div>
+        <div class="right1">我是右侧</div>
+    </div>
+
+    <div class="container container2">
+            <div class="left2">我是左侧</div>
+            <div class="right2">我是右侧</div>
+    </div>
+
+    <div class="container container3">
+            <div class="left3">我是左侧</div><div class="right3">我是右侧</div>
+    </div>
+
+    <div class="container container4">
+            <div class="left4">我是左侧</div>
+            <div class="right4">我是右侧</div>
+    </div>
+</body>
+</html>
