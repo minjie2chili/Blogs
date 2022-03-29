@@ -4,10 +4,10 @@ function throttle(fn,delay,ctx){
   return function(...args){
     if(timer) return;
     now = new Date().getTime()
-    if(now - last > delay){
+    if (now - last > delay) {
       fn.apply(ctx, args);
       last = now;
-    }else{
+    } else {
       timer = setTimeout(() => {
         fn.apply(this, args)
         last = now;
